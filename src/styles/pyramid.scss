@@ -1,0 +1,42 @@
+@use 'sass:math';
+$width: 20;
+$height: $width;
+.pyramid {
+    width: $width * 1vw;
+    height: $height * 1vw;
+    transform-style: preserve-3d;
+    transform: rotateX(90deg);
+    @keyframes spin {
+        0% {
+            transform: rotateY(0deg);
+        }
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+    animation: spin 20s linear infinite;
+    div {
+        width: 100%;
+        height: $height * 1vw;
+        position: absolute;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        background-color: white;
+        transform-origin: bottom;
+        box-shadow: 0 0 4vw gray inset;
+        $z: math.div($width, 2) * 1vw;
+        $x: 90 -
+            math.atan(
+                math.div(
+                    math.sqrt(
+                        math.pow($height, 2) - math.pow(math.div($width, 2), 2)
+                    ),
+                    math.div($width, 2)
+                )
+            );
+        @for $i from 0 through 3 {
+            &:nth-of-type(#{$i + 1}) {
+                transform: rotateY(#{$i * 90deg}) translateZ($z) rotateX($x);
+            }
+        }
+    }
+}

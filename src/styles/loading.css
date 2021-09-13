@@ -1,34 +1,34 @@
-.loading{
+.loading {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center         ;
+    align-items: center;
     background-color: black;
-    color: rgb(0, 179, 179);
+    color: white;
 }
-.loading h1{
+.loading h1 {
     font-size: 50px;
 }
 .loading h1::after {
     animation: dotDotDot 3.4s linear infinite;
     content: 'Loading';
-  }
+}
 @keyframes dotDotDot {
-    0%{
+    0% {
         content: 'Loading';
     }
-    25%{
-        content: 'Loading.'
+    25% {
+        content: 'Loading.';
     }
-    50%{
-        content: 'Loading..'
+    50% {
+        content: 'Loading..';
     }
-    75%{
-        content: 'Loading...'
+    75% {
+        content: 'Loading...';
     }
-    100%{
-        content: 'Loading...'
+    100% {
+        content: 'Loading...';
     }
 }
