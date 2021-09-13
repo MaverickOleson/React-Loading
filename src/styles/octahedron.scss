@@ -1,0 +1,40 @@
+@use 'sass:math';
+$width: 20;
+$height: math.sqrt(math.pow($width, 2) - math.pow(math.div($width, 2), 2));
+.octahedron{
+    width: $width * 1vw;
+    height: $height * 2vw;
+    transform-style: preserve-3d;
+    @keyframes spin {
+        0% { 
+          transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);
+        }
+        100% { 
+          transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+        }
+      }      
+    animation: spin 3.4s ease-in-out infinite;
+    div{
+        width: 100%;
+        height: $height * 1vw;
+        position: absolute;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        background-color: aqua;
+        opacity: 50%;
+        transform-origin: bottom;
+        box-shadow: 0 0 8vw black inset;
+        $z: math.div($width, 2) * 1vw;
+        $x: 90 - math.atan(math.div(math.sqrt(math.pow($height, 2) - math.pow(math.div($width, 2), 2)), math.div($width, 2)));
+        @for $i from 0 through 7 {
+            $x2: $x;
+            $i2: $i;
+            @if $i > 3 {
+                $x2: 180 - $x;
+                $i2: $i - 4;
+            }
+            &:nth-of-type(#{$i + 1}) {
+                transform: rotateY(#{$i2 * 90deg}) translateZ($z) rotateX($x2);
+            }
+        }
+    }
+}
