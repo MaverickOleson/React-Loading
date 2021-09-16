@@ -5,12 +5,15 @@ import Loading from './loading';
 function App() {
   const [IsLoading, setIsLoading] = useState(true);
   const [Error, setError] = useState(false);
-  const [imgIndex, setImgIndex] = useState(1);
+  const [img1Index, setImg1Index] = useState(0);
+  const [img2Index, setImg2Index] = useState(1);
   const imgSrcs = [
     'https://upload.wikimedia.org/wikipedia/commons/5/57/Bob_Moog3.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/5/57/Bob_Moog3.jpg',
-    'https://upload.wikimedia.org/wikipedia/commons/5/57/Bob_Moog3.jpg'
-  ]
+    'https://moa.byu.edu/wp-content/uploads/escher-relativity.jpg',
+    'https://www.arshake.com/wp-content/uploads/2013/10/Construction-of-the-Z1-in-the-apartment-of-Zuses-parents.jpg'
+  ];
+  const [animate, setAnimate] = useState(false);
+
   useEffect(() => {
     try {
       setTimeout(() => {setIsLoading(false)}, 3400);
@@ -18,10 +21,13 @@ function App() {
       setError(error);
     }
   },[]);
+
   function switchImg(){
-    (imgIndex + 1 < imgSrcs.length) ? setImgIndex(imgIndex + 1) : setImgIndex(1);
-    setImgIndex(imgIndex + 1);
+    (img2Index + 1 === imgSrcs.length) ? setImg2Index(0) : setImg2Index(img2Index + 1);
+    setAnimate(true);
+    setTimeout(()=>{(img1Index + 1 > imgSrcs.length) ? setImg1Index(1) : setImg1Index(img1Index + 1); setAnimate(false)}, 2000);
   }
+
   if(IsLoading){
     return <Loading/>;
   }
@@ -39,8 +45,8 @@ function App() {
         <main>
           <h1>Gallery</h1>
           <div className="imgs">
-            <img src={imgSrcs[imgIndex]} style={(imgIndex % 2 == 0) ? {animation: 'switchImg1 2s linear'} : {}} />
-            <img src={imgSrcs[imgIndex - 1]} style={(imgIndex % 2 == 0) ? {animation: 'switchImg2 2s linear'} : {}} onClick={()=>switchImg()} />
+            <img src={imgSrcs[img2Index]} style={(animate) ? {animation: 'switchImg1 2s linear'} : {}} />
+            <img src={imgSrcs[img1Index]} style={(animate) ? {animation: 'switchImg2 2s linear'} : {}} onClick={()=>switchImg()} />
           </div>
         </main>
       </div>
