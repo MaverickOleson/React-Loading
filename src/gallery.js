@@ -22,7 +22,9 @@ function Gallery() {
     try {
       setTimeout(() => {setIsLoading(false)}, 3400);
     } catch(error) {
+      setTimeout(() => {setIsLoading(false)}, 3400);
       setIsError(true);
+      console.log(error);
     }
   },[]);
 
