@@ -1,0 +1,59 @@
+.gallery {
+    width: 100%;
+    height: auto;
+    main {
+        width: 89vw;
+        height: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        .title {
+            font-size: 7.6vw;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+        }
+        .imgs {
+            width: 100%;
+            height: auto;
+            img {
+                height: 50vh;
+                border: 13px solid white;
+                &:hover {
+                    cursor: pointer;
+                }
+                &:nth-of-type(1) {
+                    position: absolute;
+                    transform: translateX(-100vw);
+                }
+            }
+        }
+    }
+}
+@keyframes switchImg2 {
+    0% {
+        transform: translateX(-100vw) rotateY(0deg);
+    }
+    33.333% {
+        transform: translateX(-100vw) rotateY(25deg);
+    }
+    66.666% {
+        transform: translateX(0) rotateY(25deg);
+    }
+    100%{
+        transform: translateX(0) rotateY(0deg);
+    }
+}
+@keyframes switchImg1 {
+    0% {
+        transform: translateX(50%) rotateY(0deg);
+    }
+    50% {
+        transform: translateX(50%) rotateY(25deg);
+    }
+    100% {
+        transform: translateX(145vw) rotateY(25deg);
+    }
+}

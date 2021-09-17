@@ -25,7 +25,7 @@
 }
 .octahedron div:nth-of-type(2) {
   transform: rotateY(90deg) translateZ(10vw) rotateX(35.2643896828deg);
-  background-color: #e7e7e7;
+  background-color: #d7d7d7;
 }
 .octahedron div:nth-of-type(3) {
   transform: rotateY(180deg) translateZ(10vw) rotateX(35.2643896828deg);
@@ -41,7 +41,7 @@
 }
 .octahedron div:nth-of-type(6) {
   transform: rotateY(90deg) translateZ(10vw) rotateX(144.7356103172deg);
-  background-color: #f7f7f7;
+  background-color: white;
 }
 .octahedron div:nth-of-type(7) {
   transform: rotateY(180deg) translateZ(10vw) rotateX(144.7356103172deg);

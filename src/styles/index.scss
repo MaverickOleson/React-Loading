@@ -1,0 +1,11 @@
+@font-face {
+  font-family: calli;
+  src: url('../fonts/GreatVibes-Regular.ttf');
+}
+body {
+    margin: 0;
+    background-color: black;
+    font-family: calli;
+    background-size: 65px 65px;
+    background-image: linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px);
+}

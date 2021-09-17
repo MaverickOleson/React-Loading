@@ -39,10 +39,10 @@ $height: math.sqrt(math.pow($width, 2) - math.pow(math.div($width, 2), 2));
                 $i2: $i - 4;
             }
             @if $i == 5 {
-                $i3: 1;
+                $i3: 0;
             }
             @if $i == 1 {
-                $i3: 3;
+                $i3: 5;
             }
             &:nth-of-type(#{$i + 1}) {
                 transform: rotateY(#{$i2 * 90deg}) translateZ($z) rotateX($x2);
